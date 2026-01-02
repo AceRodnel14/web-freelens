@@ -1,0 +1,16 @@
+services:
+  web-freelens:
+    image: eacer/web-freelens:latest
+    container_name: web-freelens
+    privileged: false
+    environment:
+      - TZ=Asia/Manila
+      - SUBFOLDER=/
+      - TITLE=web-lens IDE
+    volumes:
+      - ./config:/config
+      - ~/.kube:/config/.kube:ro
+    ports:
+      - 3001:3001
+    shm_size: "2gb"
+    restart: unless-stopped
